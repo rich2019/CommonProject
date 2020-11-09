@@ -1,5 +1,7 @@
 package simple;
 
+import java.time.LocalDateTime;
+
 /**
  * @author 陈东东
  * @date 2020/10/9 13:53
@@ -7,20 +9,22 @@ package simple;
  */
 public class Test {
     public static void main(String[] args) {
-        for (int i = 0; i < 4; i++) {
-            System.out.println("i------    " + i);
-            int count = 0;
-            for (int j = 0; j < 5; j++) {
-                if (j == 2){
-                    count++;
-                    continue;
-                }
-                System.out.println("     j------    " + j);
-            }
-//            if (count != 0) {
-//                continue;
-//            }
-//            System.out.println("count ****" + count);
-        }
+//        Calendar calendar1 = Calendar.getInstance();
+//        Calendar calendar2 = Calendar.getInstance();
+//        int dayOfWeek = calendar1.get(Calendar.DAY_OF_WEEK) - 1;
+//        int offset1 = 1 - dayOfWeek;
+//        int offset2 = 7 - dayOfWeek;
+//        calendar1.add(Calendar.DATE, offset1 - 7);
+//        calendar2.add(Calendar.DATE, offset2 - 7);
+//        String start = DateUtil.format(calendar1.getTime(),YMD);
+//        String end = DateUtil.format(calendar2.getTime(),YMD);
+//
+//        System.out.println(start);
+//        System.out.println(end);
+//创建要序列化的集合对象
+
+        System.out.println(LocalDateTime.now().toString());
+
+
     }
 }
