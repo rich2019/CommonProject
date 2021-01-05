@@ -1,0 +1,41 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "crossedTime": {
+              "from": "1607011200000",
+              "to": "1607097599999",
+              "include_lower": true,
+              "include_upper": true
+            }
+          }
+        },
+        {
+          "match": {
+            "kkid": "330523010125"
+          }
+        },
+        {
+          "match": {
+            "fxbh": "01"
+          }
+        },
+        {
+          "prefix": {
+            "hphm": "浙E"
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "cdbh_sum": {
+      "term": {
+        "field": "cdbh"
+      }
+    }
+  },
+  "size": 0
+}

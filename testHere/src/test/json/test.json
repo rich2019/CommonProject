@@ -1,0 +1,38 @@
+{
+  "bool" : {
+    "must" : [ {
+      "range" : {
+        "crossedTime" : {
+          "from" : "1607011200000",
+          "to" : "1607097599999",
+          "include_lower" : true,
+          "include_upper" : true
+        }
+      }
+    }, {
+      "prefix" : {
+        "hphm" : "浙E"
+      }
+    } ]
+  }
+},
+
+{
+  "bool" : {
+    "must" : {
+      "range" : {
+        "crossedTime" : {
+          "from" : "1607011200000",
+          "to" : "1607097599999",
+          "include_lower" : true,
+          "include_upper" : true
+        }
+      }
+    },
+    "must_not" : {
+      "prefix" : {
+        "hphm" : "浙E"
+      }
+    }
+  }
+}

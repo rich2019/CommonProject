@@ -1,6 +1,13 @@
 package simple;
 
+import common.Cons;
+import util.DateUtil;
+
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author 陈东东
@@ -9,6 +16,24 @@ import java.time.LocalDateTime;
  */
 public class Test {
     public static void main(String[] args) {
+
+        System.out.println(Cons.cityGeoMap);
+
+
+//        HashMap<String, String> map = new HashMap<>();
+//
+//        map.put("1", "hello");
+//        map.put("2", "world");
+//        System.out.println(map);
+//
+//        HashMap<String, String> map2 = new HashMap<>();
+//        map2.put("3","aaa");
+//        map2.put("1", "hello222");
+//
+//        map2.putAll(map);
+//        System.out.println(map2);
+//
+
 //        Calendar calendar1 = Calendar.getInstance();
 //        Calendar calendar2 = Calendar.getInstance();
 //        int dayOfWeek = calendar1.get(Calendar.DAY_OF_WEEK) - 1;
@@ -23,7 +48,6 @@ public class Test {
 //        System.out.println(end);
 //创建要序列化的集合对象
 
-        System.out.println(LocalDateTime.now().toString());
 
 
     }
