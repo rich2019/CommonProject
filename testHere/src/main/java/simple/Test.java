@@ -3,6 +3,8 @@ package simple;
 import common.Cons;
 import util.DateUtil;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,15 +19,22 @@ import java.util.Map;
 public class Test {
     public static void main(String[] args) {
 
-        System.out.println(Cons.cityGeoMap);
+        Long l = 100L;
+        BigDecimal radius = new BigDecimal(l);
+        BigDecimal v = radius.divide(new BigDecimal("95225.087"),20, BigDecimal.ROUND_HALF_UP);
+        System.out.println(v);
+
+
+//        System.out.println(Cons.cityGeoMap);
 
 
 //        HashMap<String, String> map = new HashMap<>();
 //
 //        map.put("1", "hello");
 //        map.put("2", "world");
-//        System.out.println(map);
-//
+//        System.out.println(map.get("1"));
+//        System.out.println(map.get("3"));
+////
 //        HashMap<String, String> map2 = new HashMap<>();
 //        map2.put("3","aaa");
 //        map2.put("1", "hello222");
