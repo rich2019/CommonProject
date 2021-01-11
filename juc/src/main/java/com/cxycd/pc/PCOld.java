@@ -4,8 +4,9 @@ package com.cxycd.pc;
  * @author 陈东东
  * @date 2021/1/10 18:21
  * @description 生产,消费
+ * 传统的方式 synchronize + wait + notify
  */
-public class PCtest {
+public class PCOld {
 
     public static void main(String[] args) {
         Data data = new Data();
