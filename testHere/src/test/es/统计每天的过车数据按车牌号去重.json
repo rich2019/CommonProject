@@ -1,0 +1,36 @@
+﻿{
+  "from": 0,
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": {
+        "range": {
+          "crossedTime": {
+            "from": "1608601209000",
+            "to": "1611714183665",
+            "include_lower": true,
+            "include_upper": true
+          }
+        }
+      }
+    }
+  },
+  "aggs": {
+    "group_by_date": {
+      "date_histogram": {
+        "field": "crossedTime",
+        "interval": "day",
+        "min_doc_count": 0,
+        "pre_zone": "+08:00"
+      },
+      "aggs": {
+        "repeat": {
+          "cardinality": {
+            "field": "hphm",
+            "precision_threshold": 1000000
+          }
+        }
+      }
+    }
+  }
+}

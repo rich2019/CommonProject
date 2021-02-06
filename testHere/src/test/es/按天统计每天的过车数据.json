@@ -1,0 +1,32 @@
+﻿{
+  "from" : 0,
+  "size" : 0,
+  "query" : {
+    "bool" : {
+      "must" : {
+        "range" : {
+          "crossedTime" : {
+            "from" : "1610812800000",
+            "to" : "1611676800000",
+            "include_lower" : true,
+            "include_upper" : true
+          }
+        }
+      }
+    }
+  },
+  "aggregations" : {
+    "count_value3" : {
+      "date_histogram" : {
+        "field" : "crossedTime",
+        "interval" : "1d",
+        "min_doc_count" : 0,
+        "pre_zone" : "+08:00",
+        "extended_bounds" : {
+          "min" : "1610812800000",
+          "max" : "1611676800000"
+        }
+      }
+    }
+  }
+}

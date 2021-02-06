@@ -1,0 +1,38 @@
+﻿{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "crossedTime": {
+              "from": "1611763200000",
+              "to": "1611817143718",
+              "include_lower": true,
+              "include_upper": true
+            }
+          }
+        },
+        {
+          "prefix": {
+            "hphm": "浙E"
+          }
+        },
+        {
+          "terms": {
+            "kkid": [
+              "330523022030"
+            ]
+          }
+        },
+        {
+          "terms": {
+            "fxbh": [
+              "04"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
