@@ -1,11 +1,11 @@
-package com.cxycd.add;
+package com.cxycd.aqs;
 
 import java.util.concurrent.Semaphore;
 
 /**
  * @author 陈东东
  * @date 2021/2/6 14:24
- * @description 一句話描述用途
+ * @description 限流,每次限制能执行的线程数量
  */
 public class SemaphoreDemo {
     public static void main(String[] args) {

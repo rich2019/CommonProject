@@ -1,0 +1,307 @@
+server {
+  listen       80;
+  server_name  localhost;
+  #上传大小配置
+  client_max_body_size 200M;
+  #charset koi8-r;
+  #access_log  /var/log/nginx/log/host.access.log  main;
+
+  # 管理后台
+  location ^~/platform {
+  root   /usr/share/nginx/html/;
+  index  index.html index.htm;
+}
+location /model {
+  proxy_pass http://gateway-zuul:7777/upms-provider/model;
+}
+
+location /editor {
+  proxy_pass http://gateway-zuul:7777/upms-provider/editor;
+}
+
+# 基线静态图片访问地址
+location /photo {
+root   /usr/share/nginx/html/;
+autoindex on;
+}
+
+# 基线
+location ^~/baseline {
+root   /usr/share/nginx/html;
+index  index.html index.htm;
+try_files $uri $uri/ /baseline/index.html;
+}
+
+location ^~/baseline/upms-provider/platform {
+proxy_pass http://gateway-zuul:7777/upms-provider/platform;
+}
+
+location ^~/baseline/data-exchange-provider {
+proxy_pass http://gateway-zuul:7777/data-exchange-provider;
+}
+
+location ^~/baseline/operational-monitoring-provider {
+proxy_pass http://gateway-zuul:7777/operational-monitoring-provider;
+}
+
+location ^~/baseline/api/data-exchange-provider {
+proxy_pass http://172.17.1.47:3000/mock/73/api/data-exchange-provider;
+}
+
+location ^~/baseline/itp-duty-provider {
+proxy_pass http://gateway-zuul:7777/itp-duty-provider;
+}
+
+location ^~/baseline/itp-zdcl-xs-provider {
+proxy_pass http://gateway-zuul:7777/itp-zdcl-xs-provider;
+}
+
+location ^~/baseline/itp-guidancesystem-provider {
+proxy_pass http://gateway-zuul:7777/itp-guidancesystem-provider;
+}
+
+location ^~/baseline/itp-informationmanagement-provider {
+proxy_pass http://gateway-zuul:7777/itp-informationmanagement-provider;
+}
+
+location ^~/baseline/itp-oam-provider {
+proxy_pass http://gateway-zuul:7777/itp-oam-provider;
+}
+
+location ^~/baseline/itp-tv-provider {
+proxy_pass http://gateway-zuul:7777/itp-tv-provider;
+}
+
+location ^~/baseline/itp-accident-provider {
+proxy_pass http://gateway-zuul:7777/itp-accident-provider;
+}
+
+location ^~/baseline/itp-va-provider {
+proxy_pass http://gateway-zuul:7777/itp-va-provider;
+}
+
+location ^~/baseline/itp-vehicle-provider {
+proxy_pass http://gateway-zuul:7777/itp-vehicle-provider;
+}
+
+location ^~/baseline/itp-sms-provider {
+proxy_pass http://gateway-zuul:7777/itp-sms-provider;
+}
+
+location ^~/baseline/itp-od-provider {
+proxy_pass http://gateway-zuul:7777/itp-od-provider;
+}
+
+location ^~/baseline/message-center-provider {
+proxy_pass http://gateway-zuul:7777/message-center-provider;
+}
+
+location ^~/baseline/traffic-light-provider {
+proxy_pass http://gateway-zuul:7777/traffic-light-provider;
+}
+
+location ^~/baseline/wf-upload-provider {
+proxy_pass http://gateway-zuul:7777/wf-upload-provider;
+}
+
+
+# 海宁交警态势分析大屏
+location ^~/screen {
+root   /usr/share/nginx/html;
+index  index.html index.htm;
+try_files $uri $uri/ /screen/index.html;
+proxy_set_header Host $host:31280;
+}
+
+location ^~/screen/upms-provider {
+proxy_pass http://gateway-zuul:7777/upms-provider;
+}
+
+location ^~/screen/itp-situation-analysis-provider {
+proxy_pass http://gateway-zuul:7777/itp-situation-analysis-provider;
+}
+
+location ^~/screen/itp-spring-festival-provider {
+proxy_pass http://gateway-zuul:7777/itp-spring-festival-provider;
+}
+
+location ^~/screen/itp-informationmanagement-provider {
+proxy_pass http://gateway-zuul:7777/itp-informationmanagement-provider;
+}
+
+location ^~/screen/itp-accident-provider {
+proxy_pass http://gateway-zuul:7777/itp-accident-provider;
+}
+
+location ^~/screen/itp-duty-provider {
+proxy_pass http://gateway-zuul:7777/itp-duty-provider;
+}
+
+location ^~/screen/itp-zdcl-xs-provider {
+proxy_pass http://gateway-zuul:7777/itp-zdcl-xs-provider;
+}
+
+# 安吉春运大屏
+location ^~/screen-spring {
+root   /usr/share/nginx/html;
+index  index.html index.htm;
+try_files $uri $uri/ /screen-spring/index.html;
+proxy_set_header Host $host:31280;
+}
+
+location ^~/screen-spring/upms-provider {
+proxy_pass http://gateway-zuul:7777/upms-provider;
+}
+
+location ^~/screen-spring/itp-situation-analysis-provider {
+proxy_pass http://gateway-zuul:7777/itp-situation-analysis-provider;
+}
+
+location ^~/screen-spring/itp-spring-festival-provider {
+proxy_pass http://gateway-zuul:7777/itp-spring-festival-provider;
+}
+
+location ^~/screen-spring/itp-informationmanagement-provider {
+proxy_pass http://gateway-zuul:7777/itp-informationmanagement-provider;
+}
+
+location ^~/screen-spring/itp-accident-provider {
+proxy_pass http://gateway-zuul:7777/itp-accident-provider;
+}
+
+location ^~/screen-spring/itp-duty-provider {
+proxy_pass http://gateway-zuul:7777/itp-duty-provider;
+}
+
+location ^~/screen-spring/itp-zdcl-xs-provider {
+proxy_pass http://gateway-zuul:7777/itp-zdcl-xs-provider;
+}
+
+# 消息中心websocket
+location /websocket/message {
+proxy_pass http://svc-message-center:9666/api/message;
+proxy_http_version 1.1;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Host $host:31280;
+proxy_set_header Connection "upgrade";
+}
+
+# 网关
+location /gateway/ {
+proxy_pass http://gateway-zuul:7777/;
+proxy_set_header Host $host:31280;
+}
+
+location /upms-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-situation-analysis-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-spring-festival-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /data-exchange-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /message-center-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /operational-monitoring-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /traffic-light-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-duty-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-zdcl-xs-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-accident-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-guidancesystem-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-informationmanagement-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-oam-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-tv-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-va-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-vehicle-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-sms-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /itp-od-provider {
+proxy_pass http://gateway-zuul:7777;
+}
+
+location /geowebcache {
+proxy_pass http://172.17.1.45:6081;
+}
+
+
+# 注册中心
+location /registry-center/ {
+proxy_pass http://cloud-eureka:8761/;
+proxy_set_header Host $host:31280;
+}
+
+location /eureka/ {
+proxy_pass http://cloud-eureka:8761;
+proxy_set_header Host $host:31280;
+}
+
+# 任务调度
+location /xxl-job-admin {
+proxy_pass http://cloud-xxl-job-admin:8080;
+proxy_set_header Host $host:31280;
+}
+
+# 链路追踪
+location /zipkin {
+proxy_pass http://monitor-zipkin:9411;
+}
+
+# 服务监控
+location /spring-boot-admin {
+proxy_pass http://monitor-spring-boot-admin:9999;
+proxy_set_header Host $host:31280;
+}
+
+
+# redirect server error pages to the static page /50x.html
+#
+error_page   500 502 503 504  /50x.html;
+location = /50x.html {
+root   /usr/share/nginx/html;
+}
+}

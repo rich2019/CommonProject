@@ -1,4 +1,4 @@
-package com.cxycd.add;
+package com.cxycd.aqs;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
