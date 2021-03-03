@@ -1,18 +1,5 @@
 package simple;
 
-import common.Cons;
-import util.DateUtil;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author 陈东东
  * @date 2020/10/9 13:53
@@ -28,16 +15,16 @@ public class Test {
 //        System.out.println("LocalDate转String:"+dateStr);
 
 
-        //获取当前时间
-        LocalDate now = LocalDate.now();
-        //指定时间，注意，如果使用下面的这种获取方式，一定要注意必须为严格的yy-mm-dd,9月必须为09,1号必须为01，否则会报错
-        LocalDate localDate1 = LocalDate.parse("2021-01-27");
-        System.out.println(now.isBefore(now.plusDays(1)));
-        System.out.println(now);
-        System.out.println(now.plusDays(1));
-        //获取两个日期的天数差，为前一个减去后一个，正数则为前面的日期较晚
-        int i = now.compareTo(localDate1);
-        System.out.println(i);
+//        //获取当前时间
+//        LocalDate now = LocalDate.now();
+//        //指定时间，注意，如果使用下面的这种获取方式，一定要注意必须为严格的yy-mm-dd,9月必须为09,1号必须为01，否则会报错
+//        LocalDate localDate1 = LocalDate.parse("2021-01-27");
+//        System.out.println(now.isBefore(now.plusDays(1)));
+//        System.out.println(now);
+//        System.out.println(now.plusDays(1));
+//        //获取两个日期的天数差，为前一个减去后一个，正数则为前面的日期较晚
+//        int i = now.compareTo(localDate1);
+//        System.out.println(i);
 
 //        Long l = 100L;
 //        BigDecimal radius = new BigDecimal(l);
