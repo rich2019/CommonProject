@@ -11,10 +11,12 @@ import java.util.concurrent.*;
  */
 public class MyThreadPoolDemo {
     public static void main(String[] args) {
+//        Executors.newFixedThreadPool(5);
+//        Executors.newCachedThreadPool();
         ThreadPoolExecutor pool = new ThreadPoolExecutor(2, 5,
                 2L, TimeUnit.SECONDS,
                 new LinkedBlockingDeque<>(3), Executors.defaultThreadFactory(),
-                new ThreadPoolExecutor.DiscardOldestPolicy());
+                new ThreadPoolExecutor.CallerRunsPolicy());
         // AbortPolicy          抛出异常,并中断程序
         // CallerRunsPolicy     任务退给调用者
         // DiscardOldestPolicy  丢弃队列中等待最久的任务,把当前任务加入到队列并尝试提交
@@ -26,6 +28,9 @@ public class MyThreadPoolDemo {
                 pool.execute(() -> {
                     System.out.println(Thread.currentThread().getName() + "执行任务     " + a);
                 });
+            }
+            while (true) {
+
             }
         } catch (Exception e) {
             e.printStackTrace();
